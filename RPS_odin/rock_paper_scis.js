@@ -8,13 +8,13 @@ let user_inp = prompt('Choose between Rock, Paper, and Scissors!').toLowerCase()
 function getRandomInt (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) - min);
-    // the maximum is inclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min + 1) + min);
+    // the maximum and the minimum are inclusive
 }
 
 // random computer  choice between rock, paper or scissors
 function computerPlay (){
-    computer_choice = getRandomInt(1,4);
+    computer_choice = getRandomInt(1,3);
     if (computer_choice === 1) {
         computer_choice = 'rock';
     } else if (computer_choice === 2){
@@ -33,6 +33,8 @@ function rpsChoice() {
             console.log('your piece of paper has arrived');
         } else if (user_inp === 'scissors'){
             console.log('your scissors have arrived');
+        } else {
+            console.log('Refresh the page, Shakespeare...')
         }
     }
 
