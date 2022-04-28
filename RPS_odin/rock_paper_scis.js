@@ -1,15 +1,13 @@
 let user_score = 0;
-let computer_score = 0;
 let computer_choice;
+let user_inp;
+let i;
 
-let user_inp = prompt('Choose between Rock, Paper, and Scissors!').toLowerCase();
-
-// get pseudo-random integer between two numbers
+// get pseudo-random integer between two numbers inclusive of ends
 function getRandomInt (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
-    // the maximum and the minimum are inclusive
 }
 
 // random computer  choice between rock, paper or scissors
@@ -22,22 +20,46 @@ function computerPlay (){
     } else if (computer_choice === 3){
         computer_choice = 'scissors';
     }
-    console.log('the computer\'s choice is ' + computer_choice)
 }
 
 // rock, paper, scissors evaluation for the user
-function rpsChoice() {
-        if (user_inp === 'rock'){
-            console.log('your rock has arrived');
-        } else if (user_inp === 'paper'){
-            console.log('your piece of paper has arrived');
-        } else if (user_inp === 'scissors'){
-            console.log('your scissors have arrived');
-        } else {
-            console.log('Refresh the page, Shakespeare...')
-        }
+
+function gameRPS() {
+    for (let i = 0; i < 5; i++){
+     user_inp = prompt('Choose between Rock, Paper, and Scissors!').toLowerCase();
+     computerPlay();
+     if (computer_choice === user_inp){
+         console.log('It\'s a tie here! The score is ' + user_score);
+     } else if (computer_choice === 'rock' && user_score === 'scissors') {
+         user_score = ++user_score;
+         console.log('Rock break the Scissors! and you lose a point. Your score is ' + user_score);
+     } else if (computer_choice === 'rock' && user_score === 'paper') {
+         user_score = --user_score;
+         console.log('Paper covers Rock! and you win a point! Your score is ' + user_score );
+     } else if (computer_choice === 'paper' && user_score === 'scissors') {
+         user_score = ++user_score;
+         console.log('Scissors cut the Paper! and you win a point! Your score is ' + user_score);
+     } else if (computer_choice === 'paper' && user_score === 'rock'){
+         user_score = --user_score;
+         console.log('Paper covers Rock! and you lose a point... Your score is ' + user_score );
+     } else if (computer_choice === 'scissors' && user_score === 'rock'){
+         user_score = ++user_score;
+         console.log('Rock break the Scissors! and you win a point! Your score is ' + user_score);
+     } else if (computer_choice === 'scissors' && user_score === 'paper'){
+         user_score = --user_score;
+         console.log('Scissors cut the Paper! and you lose a point... Your score is ' + user_score);
+     } else {
+         console.log('wut');
+         console.log(user_inp);
+         console.log(computer_choice);
+
+     }
     }
+}
+
+gameRPS();
 
 //execution of the game
-computerPlay();
-rpsChoice();
+
+//computerPlay();
+//rpsChoice();
