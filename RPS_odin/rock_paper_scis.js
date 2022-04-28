@@ -30,22 +30,22 @@ function gameRPS() {
      computerPlay();
      if (computer_choice === user_inp){
          console.log('It\'s a tie here! The score is ' + user_score);
-     } else if (computer_choice === 'rock' && user_score === 'scissors') {
+     } else if (computer_choice === 'rock' && user_inp === 'scissors') {
          user_score = ++user_score;
          console.log('Rock break the Scissors! and you lose a point. Your score is ' + user_score);
-     } else if (computer_choice === 'rock' && user_score === 'paper') {
+     } else if (computer_choice === 'rock' && user_inp === 'paper') {
          user_score = --user_score;
          console.log('Paper covers Rock! and you win a point! Your score is ' + user_score );
-     } else if (computer_choice === 'paper' && user_score === 'scissors') {
+     } else if (computer_choice === 'paper' && user_inp === 'scissors') {
          user_score = ++user_score;
          console.log('Scissors cut the Paper! and you win a point! Your score is ' + user_score);
-     } else if (computer_choice === 'paper' && user_score === 'rock'){
+     } else if (computer_choice === 'paper' && user_inp === 'rock'){
          user_score = --user_score;
          console.log('Paper covers Rock! and you lose a point... Your score is ' + user_score );
-     } else if (computer_choice === 'scissors' && user_score === 'rock'){
+     } else if (computer_choice === 'scissors' && user_inp === 'rock'){
          user_score = ++user_score;
          console.log('Rock break the Scissors! and you win a point! Your score is ' + user_score);
-     } else if (computer_choice === 'scissors' && user_score === 'paper'){
+     } else if (computer_choice === 'scissors' && user_inp === 'paper'){
          user_score = --user_score;
          console.log('Scissors cut the Paper! and you lose a point... Your score is ' + user_score);
      } else {
