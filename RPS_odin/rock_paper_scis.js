@@ -1,6 +1,9 @@
-let computer_choice;
 let user_score = 0;
-let user_inp;
+let computer_score = 0;
+let computer_choice;
+const noWinner = 'There is no winner! It\'s a tie';
+const userWinner = 'Computer is DED, you get 1 point!';
+const userLoser = 'Computer WINs, finish him VISTA!';
 
 // returns integer number within specified range inclusive of both ends.
 function getRandomInt (min, max) {
@@ -22,42 +25,45 @@ function computerPlay (){
 }
 
 // returns outcome of the rock, paper, scissors game between user and comuter.
-function gameRPS() {
-    for (let i = 0; i < 100; i++){
-     user_inp = prompt('Choose between Rock, Paper, and Scissors!').toLowerCase();
-     computerPlay();
-     if (computer_choice === user_inp){
-         console.log('It\'s a tie here! The score is ' + user_score);
-     } else if (computer_choice === 'rock' && user_inp === 'scissors') {
-         user_score = ++user_score;
-         console.log('Rock breaks the Scissors! and you lose a point. Your score is ' + user_score);
-     } else if (computer_choice === 'rock' && user_inp === 'paper') {
-         user_score = --user_score;
-         console.log('Paper covers Rock! and you win a point! Your score is ' + user_score );
-     } else if (computer_choice === 'paper' && user_inp === 'scissors') {
-         user_score = ++user_score;
-         console.log('Scissors cut the Paper! and you win a point! Your score is ' + user_score);
-     } else if (computer_choice === 'paper' && user_inp === 'rock'){
-         user_score = --user_score;
-         console.log('Paper covers Rock! and you lose a point... Your score is ' + user_score );
-     } else if (computer_choice === 'scissors' && user_inp === 'rock'){
-         user_score = ++user_score;
-         console.log('Rock breaks the Scissors! and you win a point! Your score is ' + user_score);
-     } else if (computer_choice === 'scissors' && user_inp === 'paper'){
-         user_score = --user_score;
-         console.log('Scissors cut the Paper! and you lose a point... Your score is ' + user_score);
-     } else {
-         console.log('I don\'t get it. Something is off with the input.');
-         console.log(user_inp);
-         console.log(computer_choice);
 
-     }
+function chooseWinner() {
+
+// list all the ties when score does not changes
+if (user_choice == computer_choice){
+    console.log(noWinner);
+} else if (computer_choice === 'rock' && user_choice === 'scissors' || 
+            computer_choice === 'paper' && user_choice === 'scissors' ||
+            computer_choice === 'scissors' && user_choice === 'rock') {
+                user_score = user_score + 1;
+                console.log(userWinner);
+                console.log('Your score is ' + user_score);
+                console.log('And the machine\'s score is ' + computer_score);
+} else if (computer_choice === 'rock' && user_choice === 'paper' ||
+            computer_choice === 'paper' && user_choice === 'rock' || 
+            computer_choice === 'scissors' && user_choice === 'paper') {
+                computer_score = computer_score + 1;
+                console.log(userLoser);
+                console.log('Your score is ' + user_score);
+                console.log('And the machine\'s score is ' + computer_score);
+            } else {
+                console.log('we have a problem');
+            }
+
+}
+
+// function 'play round' instead of just a game. By the end of the execution scores change and round number goes u
+
+
+function playGame() {
+    let roundCount;
+    for (roundCount = 1 ; roundCount < 6; ++roundCount){
+    user_choice = prompt('Choose between Rock, Paper, and Scissors! Type your answer.').toLowerCase();
+    console.log('It is ROUND ' + roundCount);
+    computerPlay();
+    chooseWinner();
+   
     }
 }
 
-gameRPS();
 
-//execution of the game
-
-//computerPlay();
-//rpsChoice();
+playGame();
