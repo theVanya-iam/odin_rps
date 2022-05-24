@@ -12,7 +12,6 @@ function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// makes choice for computer between rock, paper, and scissors.
 function computerPlay (){
     computer_choice = getRandomInt(1,3);
     if (computer_choice === 1) {
@@ -24,35 +23,28 @@ function computerPlay (){
     }
 }
 
-// returns outcome of the rock, paper, scissors game between user and comuter.
-
 function chooseWinner() {
-
-// list all the ties when score does not changes
 if (user_choice == computer_choice){
     console.log(noWinner);
-} else if (computer_choice === 'rock' && user_choice === 'scissors' || 
-            computer_choice === 'paper' && user_choice === 'scissors' ||
-            computer_choice === 'scissors' && user_choice === 'rock') {
-                user_score = user_score + 1;
-                console.log(userWinner);
-                console.log('Your score is ' + user_score);
-                console.log('And the machine\'s score is ' + computer_score);
-} else if (computer_choice === 'rock' && user_choice === 'paper' ||
-            computer_choice === 'paper' && user_choice === 'rock' || 
-            computer_choice === 'scissors' && user_choice === 'paper') {
-                computer_score = computer_score + 1;
-                console.log(userLoser);
-                console.log('Your score is ' + user_score);
-                console.log('And the machine\'s score is ' + computer_score);
+    } else if (computer_choice === 'rock' && user_choice === 'scissors' || 
+                computer_choice === 'paper' && user_choice === 'scissors' ||
+                computer_choice === 'scissors' && user_choice === 'rock') {
+                    user_score = user_score + 1;
+                    console.log(userWinner);
+                    console.log('Your score is ' + user_score);
+                    console.log('And the machine\'s score is ' + computer_score);
+        } else if (computer_choice === 'rock' && user_choice === 'paper' ||
+                    computer_choice === 'paper' && user_choice === 'rock' || 
+                    computer_choice === 'scissors' && user_choice === 'paper') {
+                        computer_score = computer_score + 1;
+                        console.log(userLoser);
+                        console.log('Your score is ' + user_score);
+                        console.log('And the machine\'s score is ' + computer_score);
             } else {
-                console.log('we have a problem');
+                        console.log('we have a problem');
             }
 
 }
-
-// function 'play round' instead of just a game. By the end of the execution scores change and round number goes u
-
 
 function playGame() {
     let roundCount;
