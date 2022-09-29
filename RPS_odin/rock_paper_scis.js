@@ -46,16 +46,16 @@ if (user_choice == computer_choice){
 
 }
 
-function playGame() {
-    let roundCount;
-    for (roundCount = 1 ; roundCount < 6; ++roundCount){
-    user_choice = prompt('Choose between Rock, Paper, and Scissors! Type your answer.').toLowerCase();
-    console.log('It is ROUND ' + roundCount);
-    computerPlay();
-    chooseWinner();
-   
-    }
-}
+//function playGame() {
+//    let roundCount;
+//    for (roundCount = 1 ; roundCount < 6; ++roundCount){
+//    user_choice = prompt('Choose between Rock, Paper, and Scissors! Type your answer.').toLowerCase();
+//    console.log('It is ROUND ' + roundCount);
+//    computerPlay();
+//    chooseWinner();
+//   
+//    }
+//}
 
 
 playGame();
