@@ -1,9 +1,19 @@
+const buttons = document.querySelectorAll('.button');
+let scoreBoard = document.querySelector('.score');
+let results = document.querySelector('.results');
+
 let user_score = 0;
 let computer_score = 0;
 let computer_choice;
 const noWinner = 'There is no winner! It\'s a tie';
 const userWinner = 'Computer is DED, you get 1 point!';
 const userLoser = 'Computer WINs, finish him VISTA!';
+
+// 1) Page states what to do
+// 2) Page plays the game and tells you the result
+// 3) Score is adjusted
+// 4) Next round starts
+// 5) Game stops declaring final results after Round 5
 
 // returns integer number within specified range inclusive of both ends.
 function getRandomInt (min, max) {
@@ -22,40 +32,42 @@ function computerPlay (){
         computer_choice = 'scissors';
     }
 }
-
 function chooseWinner() {
 if (user_choice == computer_choice){
-    console.log(noWinner);
+    //console.log(noWinner);
     } else if (computer_choice === 'rock' && user_choice === 'scissors' || 
                 computer_choice === 'paper' && user_choice === 'scissors' ||
                 computer_choice === 'scissors' && user_choice === 'rock') {
                     user_score = user_score + 1;
-                    console.log(userWinner);
-                    console.log('Your score is ' + user_score);
-                    console.log('And the machine\'s score is ' + computer_score);
+                    //console.log(userWinner);
+                    //console.log('Your score is ' + user_score);
+                    //console.log('And the machine\'s score is ' + computer_score);
         } else if (computer_choice === 'rock' && user_choice === 'paper' ||
                     computer_choice === 'paper' && user_choice === 'rock' || 
                     computer_choice === 'scissors' && user_choice === 'paper') {
                         computer_score = computer_score + 1;
-                        console.log(userLoser);
-                        console.log('Your score is ' + user_score);
-                        console.log('And the machine\'s score is ' + computer_score);
+                        //console.log(userLoser);
+                        //console.log('Your score is ' + user_score);
+                        //console.log('And the machine\'s score is ' + computer_score);
             } else {
-                        console.log('we have a problem');
+                        //console.log('we have a problem');
             }
 
 }
 
-//function playGame() {
-//    let roundCount;
-//    for (roundCount = 1 ; roundCount < 6; ++roundCount){
-//    user_choice = prompt('Choose between Rock, Paper, and Scissors! Type your answer.').toLowerCase();
-//    console.log('It is ROUND ' + roundCount);
-//    computerPlay();
-//    chooseWinner();
-//   
-//    }
-//}
-
+function playGame() {
+    console.log('I AM ALIVE');
+    let roundCount;
+    for (roundCount = 1 ; roundCount < 6; ++roundCount){
+        buttons.forEach(button => button.addEventListener('click', () => {
+            user_choice = button.textContent.toLowerCase();
+            console.log(user_choice);
+            }));
+        console.log(roundCount);
+    };
+    
+    //console.log('It is ROUND ' + roundCount);
+    
+};
 
 playGame();
