@@ -1,10 +1,13 @@
 const buttons = document.querySelectorAll('.button');
+const rock = document.querySelector('.buttonRock');
 let scoreBoard = document.querySelector('.score');
 let results = document.querySelector('.results');
 
 let user_score = 0;
 let computer_score = 0;
 let computer_choice;
+let roundCount = 0;
+const rounds = 5;
 const noWinner = 'There is no winner! It\'s a tie';
 const userWinner = 'Computer is DED, you get 1 point!';
 const userLoser = 'Computer WINs, finish him VISTA!';
@@ -15,7 +18,6 @@ const userLoser = 'Computer WINs, finish him VISTA!';
 // 4) Next round starts
 // 5) Game stops declaring final results after Round 5
 
-// returns integer number within specified range inclusive of both ends.
 function getRandomInt (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -55,19 +57,24 @@ if (user_choice == computer_choice){
 
 }
 
-function playGame() {
-    console.log('I AM ALIVE');
-    let roundCount;
-    for (roundCount = 1 ; roundCount < 6; ++roundCount){
-        buttons.forEach(button => button.addEventListener('click', () => {
-            user_choice = button.textContent.toLowerCase();
-            console.log(user_choice);
-            }));
-        console.log(roundCount);
-    };
-    
-    //console.log('It is ROUND ' + roundCount);
-    
-};
+// standardize this function to accept any of 3 buttons as a variable instead of rock
+function choiceMade() {
+    user_choice = rock.textContent.toLowerCase();
+    ++roundCount;
+}
 
-playGame();
+// do the same listening/removal of listener for the rest of the buttons
+rock.addEventListener('click', choiceMade);
+rock.addEventListener('click', playGame);
+
+// 1. attach computers selection to each round
+// 2. attach function to choose winner
+function playGame() {
+    if (roundCount > rounds){
+        rock.removeEventListener('click', choiceMade);
+        rock.removeEventListener('click', playGame);
+    };
+    return;
+}; 
+
+playGame(rounds);
