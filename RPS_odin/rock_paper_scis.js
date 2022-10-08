@@ -57,22 +57,23 @@ if (user_choice == computer_choice){
 
 }
 
-// standardize this function to accept any of 3 buttons as a variable instead of rock
 function choiceMade() {
-    user_choice = rock.textContent.toLowerCase();
+    user_choice = this.textContent.toLowerCase();
+    console.log({roundCount, rounds, user_choice});
     ++roundCount;
 }
 
 // do the same listening/removal of listener for the rest of the buttons
-rock.addEventListener('click', choiceMade);
-rock.addEventListener('click', playGame);
+buttons.forEach(button => button.addEventListener('click', choiceMade));
+buttons.forEach(button => button.addEventListener('click', playGame));
 
 // 1. attach computers selection to each round
 // 2. attach function to choose winner
 function playGame() {
     if (roundCount > rounds){
-        rock.removeEventListener('click', choiceMade);
-        rock.removeEventListener('click', playGame);
+        buttons.forEach(button => button.removeEventListener('click', choiceMade));
+        buttons.forEach(button => button.removeEventListener('click', playGame));
+        console.log('Game Over');
     };
     return;
 }; 
