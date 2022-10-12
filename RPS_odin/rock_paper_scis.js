@@ -74,7 +74,7 @@ function playGame() {
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
         buttons.forEach(button => button.removeEventListener('click', playGame));
-        scoreBoard.textContent = user_score > 0 ? 'You win!' : 'Computer wins! Just like everyone thought.';
+        scoreBoard.textContent = user_score > 0 ? 'You win!' : 'Computer wins!';
     };
 
     return;
