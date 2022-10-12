@@ -42,12 +42,12 @@ function chooseWinner() {
     computerPlay();
     if (user_choice === computer_choice){
     return;
-    } else if ((computer_choice === 'rock' && user_choice === 'scissors') || 
+    } else if ((computer_choice === 'rock' && user_choice === 'paper') || 
                 (computer_choice === 'paper' && user_choice === 'scissors') ||
                 (computer_choice === 'scissors' && user_choice === 'rock')) {
                     user_score = user_score + 1;
                     scoreBoard.textContent = `Score is ${user_score}`;
-    } else if ((computer_choice === 'rock' && user_choice === 'paper') ||
+    } else if ((computer_choice === 'rock' && user_choice === 'scissors') ||
                 (computer_choice === 'paper' && user_choice === 'rock') || 
                 (computer_choice === 'scissors' && user_choice === 'paper')) {
                     user_score = user_score - 1;
@@ -74,12 +74,9 @@ function playGame() {
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
         buttons.forEach(button => button.removeEventListener('click', playGame));
-        if (user_score > 0){
-            scoreBoard.textContent = 'You win! Duh.';
-        } else {
-            scoreBoard.textContent = 'Computer wins! Just like everyone thought.';
-        }
+        scoreBoard.textContent = user_score > 0 ? 'You win!' : 'Computer wins! Just like everyone thought.';
     };
+
     return;
 }; 
 
