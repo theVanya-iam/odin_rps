@@ -9,7 +9,7 @@ let computerBoard = document.querySelector('.botSelection');
 let user_score = 0;
 let computer_choice;
 let roundCount = 1;
-const rounds = 25;
+const rounds = 5;
 const noWinner = 'There is no winner! It\'s a tie';
 const userWinner = 'Computer is DED, you get 1 point!';
 const userLoser = 'Computer WINs, finish him VISTA!';
@@ -74,7 +74,11 @@ function playGame() {
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
         buttons.forEach(button => button.removeEventListener('click', playGame));
-        console.log('Game Over');
+        if (user_score > 0){
+            scoreBoard.textContent = 'You win! Duh.';
+        } else {
+            scoreBoard.textContent = 'Computer wins! Just like everyone thought.';
+        }
     };
     return;
 }; 
