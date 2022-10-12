@@ -29,30 +29,49 @@ img{
  filter: drop-shadow(10px 5px 20px #4444dd);
 }
 
-.title{
-    border-radius: 75px;
-    width: 350px;
-    padding: 20px;
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100px;
     margin-top: 100px;
-    margin-bottom: 150px;
+    
+}
+
+.title{
+    border-radius: 55px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
     background-color: rgb(12, 12, 222);
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
+}
+
+.choices{
+    border-radius: 55px;
+    background-color: #4444dd;
+    font-size: 25px; 
+    padding: 20px;
 }
 
 .gameScreen{
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    background-color: navy;
     padding: 40px;
+    background-color: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(10px);
 }
 
 .buttons{
     display: flex;
     justify-content: space-around;
+    background-color: #23a6d5;
+    border-radius: 90px;
 }
 
 .button{
@@ -64,21 +83,23 @@ img{
     margin: 20px;
     background-color: aquamarine;
     color: black;
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 5px;
     margin-right: 5px;
+    border-radius: 90px;
 }
 
-.score{
+.score, .results, .round{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
-    margin-bottom: 20px;
+    margin: 10px;
+    margin-top: 50px;
     padding: 20px;
     border-radius: 75px;
     background-color: black;
     color: white;
-    font-size: 45px;
+    font-size: 25px;
+    
     
 }

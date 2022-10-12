@@ -69,7 +69,6 @@ function choiceMade() {
 buttons.forEach(button => button.addEventListener('click', choiceMade));
 buttons.forEach(button => button.addEventListener('click', playGame));
 
-// 2. attach function to choose winner
 function playGame() {
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
