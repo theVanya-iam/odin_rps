@@ -23,13 +23,6 @@ body{
     }
 }
 
-img{
-    border-radius: 75px;
-    width: 320px;
-    height: 200px;
-    padding: 20px;
-    filter: drop-shadow(10px 5px 20px #4444dd);
-}
 
 .top{
     display: flex;
@@ -53,7 +46,16 @@ img{
     justify-content: center;
 }
 
+.start{
+    background-color: #ffd87d;
+    border-radius: 115px;
+    font-size: 65px;
+    padding: 70px;
+    margin-top: 200px;
+}
+
 .choices{
+    visibility: hidden;
     border-radius: 55px;
     background-color: rgba(255, 255, 255, 0.5); 
     backdrop-filter: blur(50px);
@@ -64,12 +66,21 @@ img{
 }
 
 .gameScreen{
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
     padding: 40px;
     background-color: rgba(255, 255, 255, 0.5); 
     backdrop-filter: blur(10px);
+}
+
+img{
+    border-radius: 75px;
+    width: 320px;
+    height: 200px;
+    padding: 20px;
+    filter: drop-shadow(10px 5px 20px #4444dd);
 }
 
 .buttons{
@@ -94,6 +105,7 @@ img{
 }
 
 .score, .results, .round{
+    visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;

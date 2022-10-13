@@ -5,14 +5,13 @@ let results = document.querySelector('.results');
 let playerBoard = document.querySelector('.selection');
 let computerBoard = document.querySelector('.botSelection');
 let title = document.querySelector('.title');
+const start = document.querySelector('.start');
+const gameScreen = document.querySelector('.gameScreen');
 
 let user_score = 0;
 let computer_choice;
 let roundCount = 1;
 const rounds = 5;
-const noWinner = 'There is no winner! It\'s a tie';
-const userWinner = 'Computer is DED, you get 1 point!';
-const userLoser = 'Computer WINs, finish him VISTA!';
 
 function getRandomInt (min, max) {
     min = Math.ceil(min);
@@ -62,14 +61,23 @@ function choiceMade() {
 
 buttons.forEach(button => button.addEventListener('click', choiceMade));
 buttons.forEach(button => button.addEventListener('click', playGame));
+start.addEventListener('click', playGame);
 
 function playGame() {
+    scoreBoard.style.visibility = 'visible';
+    playerBoard.style.visibility = 'visible';
+    computerBoard.style.visibility = 'visible';
+    results.style.visibility = 'visible';
+    gameScreen.style.visibility = 'visible';
+    start.remove();
+
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
         buttons.forEach(button => button.removeEventListener('click', playGame));
         scoreBoard.textContent = user_score > 0 ? 'You win!' : 'Computer wins!';
         title.classList.remove = 'round';
         results.textContent = '';
+
     } else if (user_score === -5){
         results.textContent = 'Wow, you have reached the lowest point humanity thought was unreachable.';
     } else if (user_score === -4){
@@ -93,8 +101,5 @@ function playGame() {
     } else if (user_score === 5){
         results.textContent = 'YOU ARE.';
     }
-
     return;
-}; 
-
-playGame(rounds);
+};
