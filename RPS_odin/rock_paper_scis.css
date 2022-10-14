@@ -1,6 +1,6 @@
 body{
+    position: relative;
     display: flex;
-    flex-shrink: 1;
     flex-direction: column;
     justify-items: center;
     font-style: italic;
@@ -26,12 +26,13 @@ body{
 
 .top{
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 100px;
     margin-top: 100px;
-    
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 10px;
+    background-color: #ffd87d;
 }
 
 .title{
@@ -51,7 +52,8 @@ body{
     border-radius: 115px;
     font-size: 65px;
     padding: 70px;
-    margin-top: 200px;
+    margin-top: 100px;
+    z-index: 9;
 }
 
 .choices{

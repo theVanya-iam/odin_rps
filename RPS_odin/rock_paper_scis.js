@@ -1,5 +1,4 @@
 const buttons = document.querySelectorAll('.button');
-const rock = document.querySelector('.buttonRock');
 let scoreBoard = document.querySelector('.score');
 let results = document.querySelector('.results');
 let playerBoard = document.querySelector('.selection');
@@ -7,6 +6,7 @@ let computerBoard = document.querySelector('.botSelection');
 let title = document.querySelector('.title');
 const start = document.querySelector('.start');
 const gameScreen = document.querySelector('.gameScreen');
+const body = document.querySelector('body');
 
 let user_score = 0;
 let computer_choice;
@@ -39,12 +39,12 @@ function chooseWinner() {
                 (computer_choice === 'paper' && user_choice === 'scissors') ||
                 (computer_choice === 'scissors' && user_choice === 'rock')) {
                     user_score = user_score + 1;
-                    scoreBoard.textContent = `Score is ${user_score}`;
+                    scoreBoard.textContent = `Score: ${user_score}`;
     } else if ((computer_choice === 'rock' && user_choice === 'scissors') ||
                 (computer_choice === 'paper' && user_choice === 'rock') || 
                 (computer_choice === 'scissors' && user_choice === 'paper')) {
                     user_score = user_score - 1;
-                    scoreBoard.textContent = `Score is ${user_score}`;
+                    scoreBoard.textContent = `Score: ${user_score}`;
     } else {
         console.error('Error');
     }
@@ -53,31 +53,61 @@ function chooseWinner() {
 function choiceMade() {
     user_choice = this.textContent.toLowerCase();
     chooseWinner();
-    console.log({user_choice, computer_choice, user_score});
     title.textContent = `Round: ${roundCount}`;
     playerBoard.textContent = `Player: ${user_choice}`;
     ++roundCount;
 };
+
+function visibility(){
+    scoreBoard.style.visibility = 'visible';
+    playerBoard.style.visibility = 'visible';
+    computerBoard.style.visibility = 'visible';
+    results.style.visibility = 'visible';
+    gameScreen.style.visibility = 'visible';
+}
+
+function restartButton(){
+    const restart = document.createElement("div");
+    restartText = document.createTextNode("RESTART");
+    restart.appendChild(restartText);
+    body.appendChild(restart);
+    restart.classList.add('start');
+    roundCount = 0;
+    restart.addEventListener('click', playGame);
+    restart.addEventListener('click', () => {
+        restart.remove();
+        results.textContent = '';
+        playerBoard.textContent = '';
+        computerBoard.textContent = '';
+        scoreBoard.textContent = 'Score: 0';
+    });
+    buttons.forEach(button => button.addEventListener('click', choiceMade));
+    buttons.forEach(button => button.addEventListener('click', playGame));
+}
+
+function invisibility(){
+    scoreBoard.style.visibility = 'hidden';
+    playerBoard.style.visibility = 'hidden';
+    computerBoard.style.visibility = 'hidden';
+    results.style.visibility = 'hidden';
+    gameScreen.style.visibility = 'hidden';
+}
 
 buttons.forEach(button => button.addEventListener('click', choiceMade));
 buttons.forEach(button => button.addEventListener('click', playGame));
 start.addEventListener('click', playGame);
 
 function playGame() {
-    scoreBoard.style.visibility = 'visible';
-    playerBoard.style.visibility = 'visible';
-    computerBoard.style.visibility = 'visible';
-    results.style.visibility = 'visible';
-    gameScreen.style.visibility = 'visible';
     start.remove();
-
+    visibility();
     if (roundCount > rounds){
         buttons.forEach(button => button.removeEventListener('click', choiceMade));
         buttons.forEach(button => button.removeEventListener('click', playGame));
         scoreBoard.textContent = user_score > 0 ? 'You win!' : 'Computer wins!';
-        title.classList.remove = 'round';
+        title.textContent = 'Rock Paper Scissors';
+        invisibility();
+        restartButton();
         results.textContent = '';
-
     } else if (user_score === -5){
         results.textContent = 'Wow, you have reached the lowest point humanity thought was unreachable.';
     } else if (user_score === -4){
