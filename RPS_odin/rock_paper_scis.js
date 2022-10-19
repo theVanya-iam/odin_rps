@@ -6,7 +6,7 @@ let computerBoard = document.querySelector('.botSelection');
 let title = document.querySelector('.title');
 const start = document.querySelector('.start');
 const gameScreen = document.querySelector('.gameScreen');
-const body = document.querySelector('body');
+const body = document.body;
 
 let user_score = 0;
 let computer_choice;
@@ -66,12 +66,24 @@ function visibility(){
     gameScreen.style.visibility = 'visible';
 }
 
+function invisibility(){
+    scoreBoard.style.visibility = 'hidden';
+    playerBoard.style.visibility = 'hidden';
+    computerBoard.style.visibility = 'hidden';
+    results.style.visibility = 'hidden';
+    gameScreen.style.visibility = 'hidden';
+}
+
+const restart = document.getElementById('startL');
+const screenID = document.getElementById('gamescreenID');
+
 function restartButton(){
     const restart = document.createElement("div");
     restartText = document.createTextNode("RESTART");
     restart.appendChild(restartText);
-    body.appendChild(restart);
+    document.body.insertBefore(restart, screenID);
     restart.classList.add('start');
+    restart.style.marginTop = '-550px';
     roundCount = 0;
     restart.addEventListener('click', playGame);
     restart.addEventListener('click', () => {
@@ -83,14 +95,6 @@ function restartButton(){
     });
     buttons.forEach(button => button.addEventListener('click', choiceMade));
     buttons.forEach(button => button.addEventListener('click', playGame));
-}
-
-function invisibility(){
-    scoreBoard.style.visibility = 'hidden';
-    playerBoard.style.visibility = 'hidden';
-    computerBoard.style.visibility = 'hidden';
-    results.style.visibility = 'hidden';
-    gameScreen.style.visibility = 'hidden';
 }
 
 buttons.forEach(button => button.addEventListener('click', choiceMade));
