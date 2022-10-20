@@ -55,6 +55,7 @@ function choiceMade() {
     chooseWinner();
     title.textContent = `Round: ${roundCount}`;
     playerBoard.textContent = `Player: ${user_choice}`;
+    
     ++roundCount;
 };
 
@@ -92,6 +93,7 @@ function restartButton(){
         playerBoard.textContent = '';
         computerBoard.textContent = '';
         scoreBoard.textContent = 'Score: 0';
+        user_score = 0;
     });
     buttons.forEach(button => button.addEventListener('click', choiceMade));
     buttons.forEach(button => button.addEventListener('click', playGame));
@@ -99,7 +101,16 @@ function restartButton(){
 
 buttons.forEach(button => button.addEventListener('click', choiceMade));
 buttons.forEach(button => button.addEventListener('click', playGame));
+
+buttons.forEach(button => button.addEventListener('mousemove', () => {
+    button.classList.add('action');
+}));
+buttons.forEach(button => button.addEventListener('mouseleave', () => {
+    button.classList.remove('action');
+}));
+
 start.addEventListener('click', playGame);
+
 
 function playGame() {
     start.remove();
